@@ -1,0 +1,148 @@
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid var(--token-qf1tzSfY6yud2);
+}
+.freeBox__yd9KE {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+}
+.freeBox__wRqv5 {
+  display: block;
+  position: relative;
+  width: 30px;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  height: 30px;
+  align-self: auto;
+  border-radius: 100px;
+  border: 1px solid var(--token-1vfxH0qLb59bm);
+}
+.img {
+  display: flex;
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  left: 11.5px;
+  top: 12px;
+}
+.imgstate_checked {
+  left: 3px;
+  top: 4px;
+  width: 23px;
+  height: 23px;
+}
+.freeBox__nyAIj {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: space-evenly;
+  width: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 100%;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  padding-left: 15px;
+}
+.freeBoxstate_editing__nyAIjoI9MC {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+}
+.freeBox__wlHrw {
+  position: relative;
+  width: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.slotTargetChildren {
+  font-size: 24px;
+  color: var(--token-Rzoe8ahkB3dSl);
+}
+.slotTargetChildrenstate_checked {
+  color: var(--token-6kkMX0iEvVXJ-);
+}
+.slotTargetChildrenstate_checked > :global(.__wab_text),
+.slotTargetChildrenstate_checked > :global(.__wab_slot-string-wrapper),
+.slotTargetChildrenstate_checked > :global(.__wab_slot) > :global(.__wab_text),
+.slotTargetChildrenstate_checked
+  > :global(.__wab_slot)
+  > :global(.__wab_slot-string-wrapper),
+.slotTargetChildrenstate_checked
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_text),
+.slotTargetChildrenstate_checked
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot-string-wrapper),
+.slotTargetChildrenstate_checked
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_text),
+.slotTargetChildrenstate_checked
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot)
+  > :global(.__wab_slot-string-wrapper) {
+  text-decoration-line: line-through;
+}
+.textInput {
+  display: flex;
+}
+.textInputstate_editing {
+  font-size: 24px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  width: auto;
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 100%;
+  box-shadow: inset 0px 0px 4px 2px rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0);
+  border-color: var(--token-5hhfGMld5atc-);
+}
+.rootstate_editing .textInputstate_editing::placeholder {
+  color: var(--token-VwmFl3ZVOm4NE);
+}
+.freeBox___98Goy {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.button {
+  position: relative;
+  font-size: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  line-height: 1;
+  opacity: 0;
+}
+.root:hover .button {
+  opacity: 0.5;
+  cursor: pointer;
+  border-width: 0px;
+}

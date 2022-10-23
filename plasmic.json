@@ -1,0 +1,124 @@
+{
+  "platform": "nextjs",
+  "code": {
+    "lang": "ts",
+    "scheme": "blackbox",
+    "reactRuntime": "classic"
+  },
+  "style": {
+    "scheme": "css-modules",
+    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.css"
+  },
+  "images": {
+    "scheme": "public-files",
+    "publicDir": "../public",
+    "publicUrlPrefix": "/"
+  },
+  "tokens": {
+    "scheme": "theo",
+    "tokensFilePath": "plasmic-tokens.theo.json"
+  },
+  "srcDir": "components",
+  "defaultPlasmicDir": "./plasmic",
+  "projects": [
+    {
+      "projectId": "iDBRKAPkGAJGJDHPJiLdSk",
+      "projectApiToken": "stIvK9hlF6phbLke7sR9SjTC8JcxkQJhgHwqUqcToW1v372BI4HIw5V8Cc797LX0hwoRKQSjEh7NBa1WF9xQ",
+      "projectName": "Consolidador de carteira",
+      "version": "latest",
+      "cssFilePath": "plasmic/consolidador_de_carteira/plasmic_consolidador_de_carteira.module.css",
+      "components": [
+        {
+          "id": "W5b0V4_JmHYlf",
+          "name": "Home",
+          "type": "managed",
+          "projectId": "iDBRKAPkGAJGJDHPJiLdSk",
+          "renderModuleFilePath": "plasmic/consolidador_de_carteira/PlasmicHome.tsx",
+          "importSpec": {
+            "modulePath": "../pages/index.tsx"
+          },
+          "cssFilePath": "plasmic/consolidador_de_carteira/PlasmicHome.module.css",
+          "scheme": "blackbox",
+          "componentType": "page"
+        },
+        {
+          "id": "WRmaEQO_6qx2h",
+          "name": "Header",
+          "type": "managed",
+          "projectId": "iDBRKAPkGAJGJDHPJiLdSk",
+          "renderModuleFilePath": "plasmic/consolidador_de_carteira/PlasmicHeader.tsx",
+          "importSpec": {
+            "modulePath": "Header.tsx"
+          },
+          "cssFilePath": "plasmic/consolidador_de_carteira/PlasmicHeader.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "d_tKrasPB8PCN",
+          "name": "Task",
+          "type": "managed",
+          "projectId": "iDBRKAPkGAJGJDHPJiLdSk",
+          "renderModuleFilePath": "plasmic/consolidador_de_carteira/PlasmicTask.tsx",
+          "importSpec": {
+            "modulePath": "Task.tsx"
+          },
+          "cssFilePath": "plasmic/consolidador_de_carteira/PlasmicTask.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "JBOg022ieg8Ip",
+          "name": "Footer",
+          "type": "managed",
+          "projectId": "iDBRKAPkGAJGJDHPJiLdSk",
+          "renderModuleFilePath": "plasmic/consolidador_de_carteira/PlasmicFooter.tsx",
+          "importSpec": {
+            "modulePath": "Footer.tsx"
+          },
+          "cssFilePath": "plasmic/consolidador_de_carteira/PlasmicFooter.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "JX9-2bz0PXlZ4",
+          "name": "ToggleButton",
+          "type": "managed",
+          "projectId": "iDBRKAPkGAJGJDHPJiLdSk",
+          "renderModuleFilePath": "plasmic/consolidador_de_carteira/PlasmicToggleButton.tsx",
+          "importSpec": {
+            "modulePath": "ToggleButton.tsx"
+          },
+          "cssFilePath": "plasmic/consolidador_de_carteira/PlasmicToggleButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        }
+      ],
+      "icons": [],
+      "images": [],
+      "indirect": false,
+      "globalContextsFilePath": "",
+      "codeComponents": [
+        {
+          "id": "yXkhpys3_d",
+          "name": "PlasmicHead",
+          "componentImportPath": "@plasmicapp/react-web"
+        },
+        {
+          "id": "eUhZ3GuuRn",
+          "name": "Fetcher",
+          "componentImportPath": "@plasmicapp/data-sources"
+        }
+      ]
+    }
+  ],
+  "globalVariants": {
+    "variantGroups": []
+  },
+  "wrapPagesWithGlobalContexts": true,
+  "nextjsConfig": {
+    "pagesDir": "../pages"
+  },
+  "cliVersion": "0.1.186",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.186/dist/plasmic.schema.json"
+}
