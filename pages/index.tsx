@@ -118,8 +118,8 @@ const Home = observer(function Home({ rootNode }: HomeProps) {
                     type="light"
                     effect="solid"
                     multiline
-                    delayShow={1000}
-                    delayHide={200}
+                    delayShow={750}
+                    delayHide={250}
                   />
                 )}
               </div>
