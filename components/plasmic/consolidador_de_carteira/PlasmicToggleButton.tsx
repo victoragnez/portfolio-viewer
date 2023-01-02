@@ -84,6 +84,22 @@ function PlasmicToggleButton__RenderFunc(props: {
     ...variants
   };
 
+  const currentUser = p.useCurrentUser?.() || {};
+
+  const stateSpecs = React.useMemo(
+    () => [
+      {
+        path: "state",
+        type: "private",
+        initFunc: ($props, $state, $ctx) => $props.state
+      }
+    ],
+    [$props, $ctx]
+  );
+  const $state = p.useDollarState(stateSpecs, $props, $ctx);
+
+  const [$queries, setDollarQueries] = React.useState({});
+
   return (
     <div
       data-plasmic-name={"root"}
@@ -97,7 +113,7 @@ function PlasmicToggleButton__RenderFunc(props: {
         projectcss.plasmic_mixins,
         projectcss.plasmic_tokens,
         sty.root,
-        { [sty.rootstate_selected]: hasVariant(variants, "state", "selected") }
+        { [sty.rootstate_selected]: hasVariant($state, "state", "selected") }
       )}
     >
       {p.renderPlasmicSlot({
@@ -105,7 +121,7 @@ function PlasmicToggleButton__RenderFunc(props: {
         value: args.children,
         className: classNames(sty.slotTargetChildren, {
           [sty.slotTargetChildrenstate_selected]: hasVariant(
-            variants,
+            $state,
             "state",
             "selected"
           )

@@ -28,7 +28,7 @@
   position: relative;
   width: 100%;
   height: auto;
-  max-width: 1024px;
+  max-width: 1200px;
   min-width: 0;
   padding: 8px;
 }
@@ -50,14 +50,38 @@
   > img {
   margin-top: 52px;
 }
-.text {
+.freeBox__kHeUj {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
   width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
+.balanceContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.text {
   height: auto;
   max-width: 800px;
   color: var(--token-1vfxH0qLb59bm);
-  min-width: 0;
 }
-.freeBox__vPeOk {
+.multiLine:global(.__wab_instance) {
+  max-width: 100%;
+  position: relative;
+}
+.contents {
   flex-direction: row;
   display: flex;
   position: relative;
@@ -68,7 +92,7 @@
   min-width: 0;
   padding: 8px;
 }
-.freeBox__vPeOk > :global(.__wab_flex-container) {
+.contents > :global(.__wab_flex-container) {
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
@@ -76,52 +100,16 @@
   margin-left: calc(0px - 30px);
   width: calc(100% + 30px);
 }
-.freeBox__vPeOk > :global(.__wab_flex-container) > *,
-.freeBox__vPeOk > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
-.freeBox__vPeOk > :global(.__wab_flex-container) > picture > img,
-.freeBox__vPeOk
+.contents > :global(.__wab_flex-container) > *,
+.contents > :global(.__wab_flex-container) > :global(.__wab_slot) > *,
+.contents > :global(.__wab_flex-container) > picture > img,
+.contents
   > :global(.__wab_flex-container)
   > :global(.__wab_slot)
   > picture
   > img {
   margin-left: 30px;
 }
-.img__oed7P {
-  object-fit: cover;
-  max-width: 100%;
-  width: 348px;
-  height: 270px;
-  flex-shrink: 0;
-}
-.img__oed7P > picture > img {
-  object-fit: cover;
-}
-.img__oed7P > :global(.__wab_img-spacer) > img {
-  object-fit: cover;
-}
-.img___6J2Yd {
-  object-fit: cover;
-  max-width: 100%;
-  width: 348px;
-  height: 270px;
-  flex-shrink: 0;
-}
-.img___6J2Yd > picture > img {
-  object-fit: cover;
-}
-.img___6J2Yd > :global(.__wab_img-spacer) > img {
-  object-fit: cover;
-}
-.img__smi1W {
-  object-fit: cover;
-  max-width: 100%;
-  width: 348px;
-  height: 270px;
-  flex-shrink: 0;
-}
-.img__smi1W > picture > img {
-  object-fit: cover;
-}
-.img__smi1W > :global(.__wab_img-spacer) > img {
-  object-fit: cover;
+.assetGroupChart:global(.__wab_instance) {
+  position: relative;
 }

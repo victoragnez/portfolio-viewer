@@ -83,6 +83,22 @@ function PlasmicHeader__RenderFunc(props: {
     ...variants
   };
 
+  const currentUser = p.useCurrentUser?.() || {};
+
+  const stateSpecs = React.useMemo(
+    () => [
+      {
+        path: "state",
+        type: "private",
+        initFunc: ($props, $state, $ctx) => $props.state
+      }
+    ],
+    [$props, $ctx]
+  );
+  const $state = p.useDollarState(stateSpecs, $props, $ctx);
+
+  const [$queries, setDollarQueries] = React.useState({});
+
   return (
     <div
       data-plasmic-name={"headerContainer"}
@@ -98,15 +114,11 @@ function PlasmicHeader__RenderFunc(props: {
         sty.headerContainer,
         {
           [sty.headerContainerstate_allChecked]: hasVariant(
-            variants,
+            $state,
             "state",
             "allChecked"
           ),
-          [sty.headerContainerstate_empty]: hasVariant(
-            variants,
-            "state",
-            "empty"
-          )
+          [sty.headerContainerstate_empty]: hasVariant($state, "state", "empty")
         }
       )}
     >
@@ -114,21 +126,21 @@ function PlasmicHeader__RenderFunc(props: {
         data-plasmic-name={"freeBox"}
         data-plasmic-override={overrides.freeBox}
         className={classNames(projectcss.all, sty.freeBox, {
-          [sty.freeBoxstate_empty]: hasVariant(variants, "state", "empty")
+          [sty.freeBoxstate_empty]: hasVariant($state, "state", "empty")
         })}
       >
-        {(hasVariant(variants, "state", "empty") ? false : true) ? (
+        {(hasVariant($state, "state", "empty") ? false : true) ? (
           <p.PlasmicImg
             data-plasmic-name={"img"}
             data-plasmic-override={overrides.img}
             alt={""}
             className={classNames(sty.img, {
               [sty.imgstate_allChecked]: hasVariant(
-                variants,
+                $state,
                 "state",
                 "allChecked"
               ),
-              [sty.imgstate_empty]: hasVariant(variants, "state", "empty")
+              [sty.imgstate_empty]: hasVariant($state, "state", "empty")
             })}
             displayHeight={"30px" as const}
             displayMaxHeight={"none" as const}
@@ -148,11 +160,11 @@ function PlasmicHeader__RenderFunc(props: {
         data-plasmic-override={overrides.textInput ?? overrides.textbox}
         className={classNames(projectcss.all, projectcss.input, sty.textInput, {
           [sty.textInputstate_allChecked]: hasVariant(
-            variants,
+            $state,
             "state",
             "allChecked"
           ),
-          [sty.textInputstate_empty]: hasVariant(variants, "state", "empty")
+          [sty.textInputstate_empty]: hasVariant($state, "state", "empty")
         })}
         placeholder={"What needs to be done?" as const}
         type={"text" as const}

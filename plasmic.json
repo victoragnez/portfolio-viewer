@@ -7,7 +7,7 @@
   },
   "style": {
     "scheme": "css-modules",
-    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.css"
+    "defaultStyleCssFilePath": "plasmic/plasmic__default_style.module.css"
   },
   "images": {
     "scheme": "public-files",
@@ -92,6 +92,33 @@
           "cssFilePath": "plasmic/consolidador_de_carteira/PlasmicToggleButton.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "HJ5nLaIXID",
+          "name": "AssetGroupChart",
+          "type": "managed",
+          "projectId": "iDBRKAPkGAJGJDHPJiLdSk",
+          "renderModuleFilePath": "plasmic/consolidador_de_carteira/PlasmicAssetGroupChart.tsx",
+          "importSpec": {
+            "modulePath": "AssetGroupChart.tsx"
+          },
+          "cssFilePath": "plasmic/consolidador_de_carteira/PlasmicAssetGroupChart.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "XQA6zh3cTBE",
+          "name": "Switch",
+          "type": "managed",
+          "projectId": "iDBRKAPkGAJGJDHPJiLdSk",
+          "renderModuleFilePath": "plasmic/consolidador_de_carteira/PlasmicSwitch.tsx",
+          "importSpec": {
+            "modulePath": "Switch.tsx"
+          },
+          "cssFilePath": "plasmic/consolidador_de_carteira/PlasmicSwitch.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "switch"
         }
       ],
       "icons": [],
@@ -107,7 +134,12 @@
         {
           "id": "eUhZ3GuuRn",
           "name": "Fetcher",
-          "componentImportPath": "@plasmicapp/data-sources"
+          "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
+        },
+        {
+          "id": "ABWxKtOQeQ",
+          "name": "PieChart",
+          "componentImportPath": "./components/PieChart"
         }
       ]
     }
@@ -119,6 +151,6 @@
   "nextjsConfig": {
     "pagesDir": "../pages"
   },
-  "cliVersion": "0.1.186",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.186/dist/plasmic.schema.json"
+  "cliVersion": "0.1.190",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.190/dist/plasmic.schema.json"
 }

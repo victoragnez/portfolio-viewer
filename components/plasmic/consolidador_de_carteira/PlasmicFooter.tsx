@@ -83,6 +83,22 @@ function PlasmicFooter__RenderFunc(props: {
     ...variants
   };
 
+  const currentUser = p.useCurrentUser?.() || {};
+
+  const stateSpecs = React.useMemo(
+    () => [
+      {
+        path: "state",
+        type: "private",
+        initFunc: ($props, $state, $ctx) => $props.state
+      }
+    ],
+    [$props, $ctx]
+  );
+  const $state = p.useDollarState(stateSpecs, $props, $ctx);
+
+  const [$queries, setDollarQueries] = React.useState({});
+
   return (
     <div
       data-plasmic-name={"footerContainer"}
@@ -99,28 +115,28 @@ function PlasmicFooter__RenderFunc(props: {
       )}
     >
       {(
-        hasVariant(variants, "state", "empty")
+        hasVariant($state, "state", "empty")
           ? false
-          : hasVariant(variants, "state", "singularLeft")
+          : hasVariant($state, "state", "singularLeft")
           ? true
-          : hasVariant(variants, "state", "hasCompleted")
+          : hasVariant($state, "state", "hasCompleted")
           ? true
           : true
       ) ? (
         <div
           className={classNames(projectcss.all, sty.freeBox___8P4A6, {
             [sty.freeBoxstate_empty___8P4A63F0Rl]: hasVariant(
-              variants,
+              $state,
               "state",
               "empty"
             ),
             [sty.freeBoxstate_hasCompleted___8P4A6GkBmc]: hasVariant(
-              variants,
+              $state,
               "state",
               "hasCompleted"
             ),
             [sty.freeBoxstate_singularLeft___8P4A6BBltI]: hasVariant(
-              variants,
+              $state,
               "state",
               "singularLeft"
             )
@@ -131,18 +147,18 @@ function PlasmicFooter__RenderFunc(props: {
             value: args.count,
             className: classNames(sty.slotTargetCount, {
               [sty.slotTargetCountstate_hasCompleted]: hasVariant(
-                variants,
+                $state,
                 "state",
                 "hasCompleted"
               ),
               [sty.slotTargetCountstate_singularLeft]: hasVariant(
-                variants,
+                $state,
                 "state",
                 "singularLeft"
               )
             })
           })}
-          {(hasVariant(variants, "state", "singularLeft") ? true : true) ? (
+          {(hasVariant($state, "state", "singularLeft") ? true : true) ? (
             <div
               className={classNames(
                 projectcss.all,
@@ -150,24 +166,24 @@ function PlasmicFooter__RenderFunc(props: {
                 sty.text__hacoy,
                 {
                   [sty.textstate_empty__hacoy3F0Rl]: hasVariant(
-                    variants,
+                    $state,
                     "state",
                     "empty"
                   ),
                   [sty.textstate_hasCompleted__hacoygkBmc]: hasVariant(
-                    variants,
+                    $state,
                     "state",
                     "hasCompleted"
                   ),
                   [sty.textstate_singularLeft__hacoyBBltI]: hasVariant(
-                    variants,
+                    $state,
                     "state",
                     "singularLeft"
                   )
                 }
               )}
             >
-              {hasVariant(variants, "state", "singularLeft")
+              {hasVariant($state, "state", "singularLeft")
                 ? " item left"
                 : " items left"}
             </div>
@@ -200,7 +216,7 @@ function PlasmicFooter__RenderFunc(props: {
         </ToggleButton>
       </p.Stack>
 
-      {(hasVariant(variants, "state", "hasCompleted") ? true : false) ? (
+      {(hasVariant($state, "state", "hasCompleted") ? true : false) ? (
         <div
           className={classNames(
             projectcss.all,
@@ -208,7 +224,7 @@ function PlasmicFooter__RenderFunc(props: {
             sty.text__lNqUw,
             {
               [sty.textstate_hasCompleted__lNqUWgkBmc]: hasVariant(
-                variants,
+                $state,
                 "state",
                 "hasCompleted"
               )

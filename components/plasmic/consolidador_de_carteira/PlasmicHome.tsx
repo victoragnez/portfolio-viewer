@@ -34,20 +34,18 @@ import {
   deriveRenderOpts,
   ensureGlobalVariants
 } from "@plasmicapp/react-web";
+import Switch from "../../Switch"; // plasmic-import: XQA6zh3cTBE/component
+import AssetGroupChart from "../../AssetGroupChart"; // plasmic-import: HJ5nLaIXID/component
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import projectcss from "./plasmic_consolidador_de_carteira.module.css"; // plasmic-import: iDBRKAPkGAJGJDHPJiLdSk/projectcss
 import sty from "./PlasmicHome.module.css"; // plasmic-import: W5b0V4_JmHYlf/css
 
-export type PlasmicHome__VariantMembers = {
-  state: "empty";
-};
-export type PlasmicHome__VariantsArgs = {
-  state?: SingleChoiceArg<"empty">;
-};
+export type PlasmicHome__VariantMembers = {};
+export type PlasmicHome__VariantsArgs = {};
 type VariantPropType = keyof PlasmicHome__VariantsArgs;
-export const PlasmicHome__VariantProps = new Array<VariantPropType>("state");
+export const PlasmicHome__VariantProps = new Array<VariantPropType>();
 
 export type PlasmicHome__ArgsType = {};
 type ArgPropType = keyof PlasmicHome__ArgsType;
@@ -56,7 +54,12 @@ export const PlasmicHome__ArgProps = new Array<ArgPropType>();
 export type PlasmicHome__OverridesType = {
   root?: p.Flex<"div">;
   appTitle?: p.Flex<"div">;
+  balanceContainer?: p.Flex<"div">;
   text?: p.Flex<"div">;
+  balanceValue?: p.Flex<"span">;
+  multiLine?: p.Flex<typeof Switch>;
+  contents?: p.Flex<"div">;
+  assetGroupChart?: p.Flex<typeof AssetGroupChart>;
 };
 
 export interface DefaultHomeProps {}
@@ -77,6 +80,10 @@ function PlasmicHome__RenderFunc(props: {
     ...args,
     ...variants
   };
+
+  const currentUser = p.useCurrentUser?.() || {};
+
+  const [$queries, setDollarQueries] = React.useState({});
 
   return (
     <React.Fragment>
@@ -100,8 +107,7 @@ function PlasmicHome__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             projectcss.plasmic_tokens,
-            sty.root,
-            { [sty.rootstate_empty]: hasVariant(variants, "state", "empty") }
+            sty.root
           )}
         >
           <div
@@ -122,59 +128,76 @@ function PlasmicHome__RenderFunc(props: {
               hasGap={true}
               className={classNames(projectcss.all, sty.freeBox___1Nw4Q)}
             >
-              <div
-                data-plasmic-name={"text"}
-                data-plasmic-override={overrides.text}
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text
-                )}
-              >
-                {"R$ ******"}
-              </div>
+              {true ? (
+                <div className={classNames(projectcss.all, sty.freeBox__kHeUj)}>
+                  {true ? (
+                    <div
+                      data-plasmic-name={"balanceContainer"}
+                      data-plasmic-override={overrides.balanceContainer}
+                      className={classNames(
+                        projectcss.all,
+                        sty.balanceContainer
+                      )}
+                    >
+                      <div
+                        data-plasmic-name={"text"}
+                        data-plasmic-override={overrides.text}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text
+                        )}
+                      >
+                        <React.Fragment>
+                          <React.Fragment>{"Patrimônio: R$ "}</React.Fragment>
+                          {
+                            <span
+                              data-plasmic-name={"balanceValue"}
+                              data-plasmic-override={overrides.balanceValue}
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.span,
+                                projectcss.__wab_text,
+                                projectcss.plasmic_default__inline,
+                                sty.balanceValue
+                              )}
+                            >
+                              {"*******"}
+                            </span>
+                          }
+                          <React.Fragment>{""}</React.Fragment>
+                        </React.Fragment>
+                      </div>
+                    </div>
+                  ) : null}
 
+                  <Switch
+                    data-plasmic-name={"multiLine"}
+                    data-plasmic-override={overrides.multiLine}
+                    className={classNames("__wab_instance", sty.multiLine)}
+                  >
+                    {"Multi-linha  "}
+                  </Switch>
+                </div>
+              ) : null}
               {true ? (
                 <p.Stack
                   as={"div"}
+                  data-plasmic-name={"contents"}
+                  data-plasmic-override={overrides.contents}
                   hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__vPeOk)}
+                  className={classNames(projectcss.all, sty.contents)}
                 >
-                  <p.PlasmicImg
-                    alt={""}
-                    className={classNames(sty.img__oed7P)}
-                    displayHeight={"270px" as const}
-                    displayMaxHeight={"none" as const}
-                    displayMaxWidth={"100%" as const}
-                    displayMinHeight={"0" as const}
-                    displayMinWidth={"0" as const}
-                    displayWidth={"348px" as const}
-                    loading={"lazy" as const}
-                  />
-
-                  <p.PlasmicImg
-                    alt={""}
-                    className={classNames(sty.img___6J2Yd)}
-                    displayHeight={"270px" as const}
-                    displayMaxHeight={"none" as const}
-                    displayMaxWidth={"100%" as const}
-                    displayMinHeight={"0" as const}
-                    displayMinWidth={"0" as const}
-                    displayWidth={"348px" as const}
-                    loading={"lazy" as const}
-                  />
-
-                  <p.PlasmicImg
-                    alt={""}
-                    className={classNames(sty.img__smi1W)}
-                    displayHeight={"270px" as const}
-                    displayMaxHeight={"none" as const}
-                    displayMaxWidth={"100%" as const}
-                    displayMinHeight={"0" as const}
-                    displayMinWidth={"0" as const}
-                    displayWidth={"348px" as const}
-                    loading={"lazy" as const}
-                  />
+                  {true ? (
+                    <AssetGroupChart
+                      data-plasmic-name={"assetGroupChart"}
+                      data-plasmic-override={overrides.assetGroupChart}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.assetGroupChart
+                      )}
+                    />
+                  ) : null}
                 </p.Stack>
               ) : null}
             </p.Stack>
@@ -186,9 +209,23 @@ function PlasmicHome__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "appTitle", "text"],
+  root: [
+    "root",
+    "appTitle",
+    "balanceContainer",
+    "text",
+    "balanceValue",
+    "multiLine",
+    "contents",
+    "assetGroupChart"
+  ],
   appTitle: ["appTitle"],
-  text: ["text"]
+  balanceContainer: ["balanceContainer", "text", "balanceValue"],
+  text: ["text", "balanceValue"],
+  balanceValue: ["balanceValue"],
+  multiLine: ["multiLine"],
+  contents: ["contents", "assetGroupChart"],
+  assetGroupChart: ["assetGroupChart"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -196,7 +233,12 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   appTitle: "div";
+  balanceContainer: "div";
   text: "div";
+  balanceValue: "span";
+  multiLine: typeof Switch;
+  contents: "div";
+  assetGroupChart: typeof AssetGroupChart;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -261,7 +303,12 @@ export const PlasmicHome = Object.assign(
   {
     // Helper components rendering sub-elements
     appTitle: makeNodeComponent("appTitle"),
+    balanceContainer: makeNodeComponent("balanceContainer"),
     text: makeNodeComponent("text"),
+    balanceValue: makeNodeComponent("balanceValue"),
+    multiLine: makeNodeComponent("multiLine"),
+    contents: makeNodeComponent("contents"),
+    assetGroupChart: makeNodeComponent("assetGroupChart"),
 
     // Metadata about props expected for PlasmicHome
     internalVariantProps: PlasmicHome__VariantProps,

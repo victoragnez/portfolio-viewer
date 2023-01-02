@@ -86,6 +86,22 @@ function PlasmicTask__RenderFunc(props: {
     ...variants
   };
 
+  const currentUser = p.useCurrentUser?.() || {};
+
+  const stateSpecs = React.useMemo(
+    () => [
+      {
+        path: "state",
+        type: "private",
+        initFunc: ($props, $state, $ctx) => $props.state
+      }
+    ],
+    [$props, $ctx]
+  );
+  const $state = p.useDollarState(stateSpecs, $props, $ctx);
+
+  const [$queries, setDollarQueries] = React.useState({});
+
   return (
     <div
       data-plasmic-name={"root"}
@@ -100,54 +116,50 @@ function PlasmicTask__RenderFunc(props: {
         projectcss.plasmic_tokens,
         sty.root,
         {
-          [sty.rootstate_checked]: hasVariant(variants, "state", "checked"),
-          [sty.rootstate_editing]: hasVariant(variants, "state", "editing")
+          [sty.rootstate_checked]: hasVariant($state, "state", "checked"),
+          [sty.rootstate_editing]: hasVariant($state, "state", "editing")
         }
       )}
     >
       <div
         className={classNames(projectcss.all, sty.freeBox__yd9KE, {
           [sty.freeBoxstate_editing__yd9KEoI9MC]: hasVariant(
-            variants,
+            $state,
             "state",
             "editing"
           )
         })}
       >
-        {(hasVariant(variants, "state", "editing") ? false : true) ? (
+        {(hasVariant($state, "state", "editing") ? false : true) ? (
           <div
             className={classNames(projectcss.all, sty.freeBox__wRqv5, {
               [sty.freeBoxstate_checked__wRqv5Sdv3S]: hasVariant(
-                variants,
+                $state,
                 "state",
                 "checked"
               ),
               [sty.freeBoxstate_editing__wRqv5OI9MC]: hasVariant(
-                variants,
+                $state,
                 "state",
                 "editing"
               )
             })}
           >
-            {(hasVariant(variants, "state", "checked") ? true : false) ? (
+            {(hasVariant($state, "state", "checked") ? true : false) ? (
               <p.PlasmicImg
                 data-plasmic-name={"img"}
                 data-plasmic-override={overrides.img}
                 alt={""}
                 className={classNames(sty.img, {
                   [sty.imgstate_checked]: hasVariant(
-                    variants,
+                    $state,
                     "state",
                     "checked"
                   ),
-                  [sty.imgstate_editing]: hasVariant(
-                    variants,
-                    "state",
-                    "editing"
-                  )
+                  [sty.imgstate_editing]: hasVariant($state, "state", "editing")
                 })}
                 displayHeight={
-                  hasVariant(variants, "state", "checked")
+                  hasVariant($state, "state", "checked")
                     ? ("23px" as const)
                     : ("16px" as const)
                 }
@@ -156,12 +168,12 @@ function PlasmicTask__RenderFunc(props: {
                 displayMinHeight={"0" as const}
                 displayMinWidth={"0" as const}
                 displayWidth={
-                  hasVariant(variants, "state", "checked")
+                  hasVariant($state, "state", "checked")
                     ? ("23px" as const)
                     : ("16px" as const)
                 }
                 src={
-                  hasVariant(variants, "state", "checked")
+                  hasVariant($state, "state", "checked")
                     ? ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3Ryb2tlLXdpZHRoPSIwIiBmaWxsPSJjdXJyZW50Q29sb3IiIHN0cm9rZT0iY3VycmVudENvbG9yIiBzdHlsZT0iZmlsbDogcmdiKDQsIDE0MywgNjQpOyI+PHBhdGggZD0iTTE3My44OTggNDM5LjQwNGwtMTY2LjQtMTY2LjRjLTkuOTk3LTkuOTk3LTkuOTk3LTI2LjIwNiAwLTM2LjIwNGwzNi4yMDMtMzYuMjA0YzkuOTk3LTkuOTk4IDI2LjIwNy05Ljk5OCAzNi4yMDQgMEwxOTIgMzEyLjY5IDQzMi4wOTUgNzIuNTk2YzkuOTk3LTkuOTk3IDI2LjIwNy05Ljk5NyAzNi4yMDQgMGwzNi4yMDMgMzYuMjA0YzkuOTk3IDkuOTk3IDkuOTk3IDI2LjIwNiAwIDM2LjIwNGwtMjk0LjQgMjk0LjQwMWMtOS45OTggOS45OTctMjYuMjA3IDkuOTk3LTM2LjIwNC0uMDAxeiIvPjwvc3ZnPg==" as const)
                     : ("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxZW0iIGhlaWdodD0iMWVtIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3Ryb2tlLXdpZHRoPSIwIiBmaWxsPSJjdXJyZW50Q29sb3IiIHN0cm9rZT0iY3VycmVudENvbG9yIj48cGF0aCBkPSJNMTczLjg5OCA0MzkuNDA0bC0xNjYuNC0xNjYuNGMtOS45OTctOS45OTctOS45OTctMjYuMjA2IDAtMzYuMjA0bDM2LjIwMy0zNi4yMDRjOS45OTctOS45OTggMjYuMjA3LTkuOTk4IDM2LjIwNCAwTDE5MiAzMTIuNjkgNDMyLjA5NSA3Mi41OTZjOS45OTctOS45OTcgMjYuMjA3LTkuOTk3IDM2LjIwNCAwbDM2LjIwMyAzNi4yMDRjOS45OTcgOS45OTcgOS45OTcgMjYuMjA2IDAgMzYuMjA0bC0yOTQuNCAyOTQuNDAxYy05Ljk5OCA5Ljk5Ny0yNi4yMDcgOS45OTctMzYuMjA0LS4wMDF6Ii8+PC9zdmc+" as const)
                 }
@@ -174,27 +186,27 @@ function PlasmicTask__RenderFunc(props: {
       <div
         className={classNames(projectcss.all, sty.freeBox__nyAIj, {
           [sty.freeBoxstate_checked__nyAIjSdv3S]: hasVariant(
-            variants,
+            $state,
             "state",
             "checked"
           ),
           [sty.freeBoxstate_editing__nyAIjoI9MC]: hasVariant(
-            variants,
+            $state,
             "state",
             "editing"
           )
         })}
       >
-        {(hasVariant(variants, "state", "editing") ? false : true) ? (
+        {(hasVariant($state, "state", "editing") ? false : true) ? (
           <div
             className={classNames(projectcss.all, sty.freeBox__wlHrw, {
               [sty.freeBoxstate_checked__wlHrwSdv3S]: hasVariant(
-                variants,
+                $state,
                 "state",
                 "checked"
               ),
               [sty.freeBoxstate_editing__wlHrwoI9MC]: hasVariant(
-                variants,
+                $state,
                 "state",
                 "editing"
               )
@@ -205,12 +217,12 @@ function PlasmicTask__RenderFunc(props: {
               value: args.children,
               className: classNames(sty.slotTargetChildren, {
                 [sty.slotTargetChildrenstate_checked]: hasVariant(
-                  variants,
+                  $state,
                   "state",
                   "checked"
                 ),
                 [sty.slotTargetChildrenstate_editing]: hasVariant(
-                  variants,
+                  $state,
                   "state",
                   "editing"
                 )
@@ -218,7 +230,7 @@ function PlasmicTask__RenderFunc(props: {
             })}
           </div>
         ) : null}
-        {(hasVariant(variants, "state", "editing") ? true : false) ? (
+        {(hasVariant($state, "state", "editing") ? true : false) ? (
           <input
             data-plasmic-name={"textInput"}
             data-plasmic-override={overrides.textInput ?? overrides.textbox}
@@ -228,7 +240,7 @@ function PlasmicTask__RenderFunc(props: {
               sty.textInput,
               {
                 [sty.textInputstate_editing]: hasVariant(
-                  variants,
+                  $state,
                   "state",
                   "editing"
                 )
@@ -238,11 +250,11 @@ function PlasmicTask__RenderFunc(props: {
             type={"text" as const}
           />
         ) : null}
-        {(hasVariant(variants, "state", "editing") ? false : true) ? (
+        {(hasVariant($state, "state", "editing") ? false : true) ? (
           <div
             className={classNames(projectcss.all, sty.freeBox___98Goy, {
               [sty.freeBoxstate_editing___98GoyoI9MC]: hasVariant(
-                variants,
+                $state,
                 "state",
                 "editing"
               )
@@ -258,7 +270,7 @@ function PlasmicTask__RenderFunc(props: {
                 sty.button,
                 {
                   [sty.buttonstate_editing]: hasVariant(
-                    variants,
+                    $state,
                     "state",
                     "editing"
                   )
