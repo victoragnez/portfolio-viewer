@@ -49,7 +49,10 @@ export const PieChart = React.forwardRef<HTMLDivElement, PieChartProps>(
           <br />
           {`R$ ${
             showValues
-              ? `${(Math.round(entry.value * 100) / 100).toFixed(2)}`
+              ? `${Intl.NumberFormat("pt-br", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                }).format(Math.round(entry.value * 100) / 100)}`
               : "*****"
           }`}
           <br />

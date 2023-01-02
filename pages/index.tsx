@@ -94,9 +94,10 @@ const Home = observer(function Home({ rootNode }: HomeProps) {
           balanceValue={{
             ...(showValues
               ? {
-                  children: `${(Math.round(tree.value * 100) / 100).toFixed(
-                    2
-                  )}`,
+                  children: `${Intl.NumberFormat("pt-br", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  }).format(Math.round(tree.value * 100) / 100)}`,
                 }
               : {}),
           }}
