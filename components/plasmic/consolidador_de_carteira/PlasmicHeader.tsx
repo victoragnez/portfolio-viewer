@@ -32,7 +32,7 @@ import {
   useTrigger,
   StrictProps,
   deriveRenderOpts,
-  ensureGlobalVariants
+  ensureGlobalVariants,
 } from "@plasmicapp/react-web";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -43,9 +43,11 @@ import sty from "./PlasmicHeader.module.css"; // plasmic-import: WRmaEQO_6qx2h/c
 export type PlasmicHeader__VariantMembers = {
   state: "empty" | "allChecked";
 };
+
 export type PlasmicHeader__VariantsArgs = {
   state?: SingleChoiceArg<"empty" | "allChecked">;
 };
+
 type VariantPropType = keyof PlasmicHeader__VariantsArgs;
 export const PlasmicHeader__VariantProps = new Array<VariantPropType>("state");
 
@@ -76,11 +78,19 @@ function PlasmicHeader__RenderFunc(props: {
   const { variants, overrides, forNode } = props;
 
   const $ctx = ph.useDataEnv?.() || {};
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {},
+
+        props.args
+      ),
+    [props.args]
+  );
 
   const $props = {
     ...args,
-    ...variants
+    ...variants,
   };
 
   const currentUser = p.useCurrentUser?.() || {};
@@ -90,8 +100,8 @@ function PlasmicHeader__RenderFunc(props: {
       {
         path: "state",
         type: "private",
-        initFunc: ($props, $state, $ctx) => $props.state
-      }
+        initFunc: ($props, $state, $ctx) => $props.state,
+      },
     ],
     [$props, $ctx]
   );
@@ -118,7 +128,11 @@ function PlasmicHeader__RenderFunc(props: {
             "state",
             "allChecked"
           ),
-          [sty.headerContainerstate_empty]: hasVariant($state, "state", "empty")
+          [sty.headerContainerstate_empty]: hasVariant(
+            $state,
+            "state",
+            "empty"
+          ),
         }
       )}
     >
@@ -126,7 +140,7 @@ function PlasmicHeader__RenderFunc(props: {
         data-plasmic-name={"freeBox"}
         data-plasmic-override={overrides.freeBox}
         className={classNames(projectcss.all, sty.freeBox, {
-          [sty.freeBoxstate_empty]: hasVariant($state, "state", "empty")
+          [sty.freeBoxstate_empty]: hasVariant($state, "state", "empty"),
         })}
       >
         {(hasVariant($state, "state", "empty") ? false : true) ? (
@@ -140,7 +154,7 @@ function PlasmicHeader__RenderFunc(props: {
                 "state",
                 "allChecked"
               ),
-              [sty.imgstate_empty]: hasVariant($state, "state", "empty")
+              [sty.imgstate_empty]: hasVariant($state, "state", "empty"),
             })}
             displayHeight={"30px" as const}
             displayMaxHeight={"none" as const}
@@ -164,7 +178,7 @@ function PlasmicHeader__RenderFunc(props: {
             "state",
             "allChecked"
           ),
-          [sty.textInputstate_empty]: hasVariant($state, "state", "empty")
+          [sty.textInputstate_empty]: hasVariant($state, "state", "empty"),
         })}
         placeholder={"What needs to be done?" as const}
         type={"text" as const}
@@ -179,11 +193,11 @@ const PlasmicDescendants = {
     "freeBox",
     "img",
     "textInput",
-    "textbox"
+    "textbox",
   ],
   freeBox: ["freeBox", "img"],
   img: ["img"],
-  textInput: ["textInput", "textbox"]
+  textInput: ["textInput", "textbox"],
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -231,7 +245,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
           name: nodeName,
           descendantNames: [...PlasmicDescendants[nodeName]],
           internalArgPropNames: PlasmicHeader__ArgProps,
-          internalVariantPropNames: PlasmicHeader__VariantProps
+          internalVariantPropNames: PlasmicHeader__VariantProps,
         }),
       [props, nodeName]
     );
@@ -240,7 +254,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       variants,
       args,
       overrides,
-      forNode: nodeName
+      forNode: nodeName,
     });
   };
   if (nodeName === "headerContainer") {
@@ -262,7 +276,7 @@ export const PlasmicHeader = Object.assign(
 
     // Metadata about props expected for PlasmicHeader
     internalVariantProps: PlasmicHeader__VariantProps,
-    internalArgProps: PlasmicHeader__ArgProps
+    internalArgProps: PlasmicHeader__ArgProps,
   }
 );
 

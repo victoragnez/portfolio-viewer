@@ -1,9 +1,11 @@
-
 module.exports = {
   eslint: {
     ignoreDuringBuilds: true,
   },
   trailingSlash: true,
-  // Your NextJS config.
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false, path: false };
+
+    return config;
+  },
 };
-    

@@ -9,19 +9,39 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@plasmicapp/cli": "^0.1.190",
-    "@plasmicapp/host": "^1.0.92",
-    "@plasmicapp/react-web": "^0.2.136",
+    "@ant-design/icons": "^4.8.0",
+    "@plasmicapp/host": "^1.0.85",
+    "@plasmicapp/react-web": "^0.2.124",
+    "axios": "^1.2.0",
+    "classnames": "^2.3.2",
+    "coingecko-api": "^1.0.10",
+    "distinct-colors": "^3.0.0",
+    "lodash": "^4.17.21",
+    "memoize-one": "^6.0.0",
+    "mobx": "^6.7.0",
+    "mobx-react-lite": "^3.4.0",
     "next": "12.3.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-minimal-pie-chart": "^8.4.0",
+    "react-tooltip": "^4.5.1",
+    "uuid": "^9.0.0",
+    "yahoo-finance2": "^2.3.10",
+    "yahoo-finance2-internal": "link:./internal_packages/yahoo-finance2"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^13.0.5",
+    "@types/lodash": "^4.14.190",
     "@types/node": "18.11.3",
     "@types/react": "18.0.21",
     "@types/react-dom": "18.0.6",
-    "eslint": "8.26.0",
+    "@types/uuid": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
+    "@typescript-eslint/parser": "^5.44.0",
+    "eslint": "^8.28.0",
     "eslint-config-next": "12.3.1",
-    "typescript": "4.8.4"
+    "eslint-plugin-react": "^7.31.11",
+    "ts-essentials": "^9.3.0",
+    "typescript": "^4.9.3"
   }
 }

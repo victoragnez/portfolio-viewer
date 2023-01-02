@@ -32,7 +32,7 @@ import {
   useTrigger,
   StrictProps,
   deriveRenderOpts,
-  ensureGlobalVariants
+  ensureGlobalVariants,
 } from "@plasmicapp/react-web";
 import { PieChart } from "../../PieChart"; // plasmic-import: ABWxKtOQeQ/codeComponent
 
@@ -71,11 +71,19 @@ function PlasmicAssetGroupChart__RenderFunc(props: {
   const { variants, overrides, forNode } = props;
 
   const $ctx = ph.useDataEnv?.() || {};
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {},
+
+        props.args
+      ),
+    [props.args]
+  );
 
   const $props = {
     ...args,
-    ...variants
+    ...variants,
   };
 
   const currentUser = p.useCurrentUser?.() || {};
@@ -119,7 +127,7 @@ function PlasmicAssetGroupChart__RenderFunc(props: {
           data={[
             { name: "One", value: 10, color: "#E38627" },
             { name: "Two", value: 15, color: "#C13C37" },
-            { name: "Three", value: 20, color: "#6A2135" }
+            { name: "Three", value: 20, color: "#6A2135" },
           ]}
         />
       </div>
@@ -130,7 +138,7 @@ function PlasmicAssetGroupChart__RenderFunc(props: {
 const PlasmicDescendants = {
   root: ["root", "groupName", "chart"],
   groupName: ["groupName"],
-  chart: ["chart"]
+  chart: ["chart"],
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -177,7 +185,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
           name: nodeName,
           descendantNames: [...PlasmicDescendants[nodeName]],
           internalArgPropNames: PlasmicAssetGroupChart__ArgProps,
-          internalVariantPropNames: PlasmicAssetGroupChart__VariantProps
+          internalVariantPropNames: PlasmicAssetGroupChart__VariantProps,
         }),
       [props, nodeName]
     );
@@ -186,7 +194,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       variants,
       args,
       overrides,
-      forNode: nodeName
+      forNode: nodeName,
     });
   };
   if (nodeName === "root") {
@@ -207,7 +215,7 @@ export const PlasmicAssetGroupChart = Object.assign(
 
     // Metadata about props expected for PlasmicAssetGroupChart
     internalVariantProps: PlasmicAssetGroupChart__VariantProps,
-    internalArgProps: PlasmicAssetGroupChart__ArgProps
+    internalArgProps: PlasmicAssetGroupChart__ArgProps,
   }
 );
 

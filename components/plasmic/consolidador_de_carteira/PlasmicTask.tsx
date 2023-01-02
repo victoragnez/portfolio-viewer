@@ -32,7 +32,7 @@ import {
   useTrigger,
   StrictProps,
   deriveRenderOpts,
-  ensureGlobalVariants
+  ensureGlobalVariants,
 } from "@plasmicapp/react-web";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -43,15 +43,18 @@ import sty from "./PlasmicTask.module.css"; // plasmic-import: d_tKrasPB8PCN/css
 export type PlasmicTask__VariantMembers = {
   state: "checked" | "editing";
 };
+
 export type PlasmicTask__VariantsArgs = {
   state?: SingleChoiceArg<"checked" | "editing">;
 };
+
 type VariantPropType = keyof PlasmicTask__VariantsArgs;
 export const PlasmicTask__VariantProps = new Array<VariantPropType>("state");
 
 export type PlasmicTask__ArgsType = {
   children?: React.ReactNode;
 };
+
 type ArgPropType = keyof PlasmicTask__ArgsType;
 export const PlasmicTask__ArgProps = new Array<ArgPropType>("children");
 
@@ -79,11 +82,19 @@ function PlasmicTask__RenderFunc(props: {
   const { variants, overrides, forNode } = props;
 
   const $ctx = ph.useDataEnv?.() || {};
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {},
+
+        props.args
+      ),
+    [props.args]
+  );
 
   const $props = {
     ...args,
-    ...variants
+    ...variants,
   };
 
   const currentUser = p.useCurrentUser?.() || {};
@@ -93,8 +104,8 @@ function PlasmicTask__RenderFunc(props: {
       {
         path: "state",
         type: "private",
-        initFunc: ($props, $state, $ctx) => $props.state
-      }
+        initFunc: ($props, $state, $ctx) => $props.state,
+      },
     ],
     [$props, $ctx]
   );
@@ -117,7 +128,7 @@ function PlasmicTask__RenderFunc(props: {
         sty.root,
         {
           [sty.rootstate_checked]: hasVariant($state, "state", "checked"),
-          [sty.rootstate_editing]: hasVariant($state, "state", "editing")
+          [sty.rootstate_editing]: hasVariant($state, "state", "editing"),
         }
       )}
     >
@@ -127,7 +138,7 @@ function PlasmicTask__RenderFunc(props: {
             $state,
             "state",
             "editing"
-          )
+          ),
         })}
       >
         {(hasVariant($state, "state", "editing") ? false : true) ? (
@@ -142,7 +153,7 @@ function PlasmicTask__RenderFunc(props: {
                 $state,
                 "state",
                 "editing"
-              )
+              ),
             })}
           >
             {(hasVariant($state, "state", "checked") ? true : false) ? (
@@ -156,7 +167,11 @@ function PlasmicTask__RenderFunc(props: {
                     "state",
                     "checked"
                   ),
-                  [sty.imgstate_editing]: hasVariant($state, "state", "editing")
+                  [sty.imgstate_editing]: hasVariant(
+                    $state,
+                    "state",
+                    "editing"
+                  ),
                 })}
                 displayHeight={
                   hasVariant($state, "state", "checked")
@@ -194,7 +209,7 @@ function PlasmicTask__RenderFunc(props: {
             $state,
             "state",
             "editing"
-          )
+          ),
         })}
       >
         {(hasVariant($state, "state", "editing") ? false : true) ? (
@@ -209,7 +224,7 @@ function PlasmicTask__RenderFunc(props: {
                 $state,
                 "state",
                 "editing"
-              )
+              ),
             })}
           >
             {p.renderPlasmicSlot({
@@ -225,8 +240,8 @@ function PlasmicTask__RenderFunc(props: {
                   $state,
                   "state",
                   "editing"
-                )
-              })
+                ),
+              }),
             })}
           </div>
         ) : null}
@@ -243,7 +258,7 @@ function PlasmicTask__RenderFunc(props: {
                   $state,
                   "state",
                   "editing"
-                )
+                ),
               }
             )}
             placeholder={"Some placeholder text" as const}
@@ -257,7 +272,7 @@ function PlasmicTask__RenderFunc(props: {
                 $state,
                 "state",
                 "editing"
-              )
+              ),
             })}
           >
             <button
@@ -273,7 +288,7 @@ function PlasmicTask__RenderFunc(props: {
                     $state,
                     "state",
                     "editing"
-                  )
+                  ),
                 }
               )}
             >
@@ -290,7 +305,7 @@ const PlasmicDescendants = {
   root: ["root", "img", "textInput", "textbox", "button"],
   img: ["img"],
   textInput: ["textInput", "textbox"],
-  button: ["button"]
+  button: ["button"],
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -338,7 +353,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
           name: nodeName,
           descendantNames: [...PlasmicDescendants[nodeName]],
           internalArgPropNames: PlasmicTask__ArgProps,
-          internalVariantPropNames: PlasmicTask__VariantProps
+          internalVariantPropNames: PlasmicTask__VariantProps,
         }),
       [props, nodeName]
     );
@@ -347,7 +362,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       variants,
       args,
       overrides,
-      forNode: nodeName
+      forNode: nodeName,
     });
   };
   if (nodeName === "root") {
@@ -369,7 +384,7 @@ export const PlasmicTask = Object.assign(
 
     // Metadata about props expected for PlasmicTask
     internalVariantProps: PlasmicTask__VariantProps,
-    internalArgProps: PlasmicTask__ArgProps
+    internalArgProps: PlasmicTask__ArgProps,
   }
 );
 

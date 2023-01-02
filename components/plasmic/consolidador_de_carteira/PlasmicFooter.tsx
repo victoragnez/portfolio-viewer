@@ -32,7 +32,7 @@ import {
   useTrigger,
   StrictProps,
   deriveRenderOpts,
-  ensureGlobalVariants
+  ensureGlobalVariants,
 } from "@plasmicapp/react-web";
 import ToggleButton from "../../ToggleButton"; // plasmic-import: JX9-2bz0PXlZ4/component
 
@@ -44,15 +44,18 @@ import sty from "./PlasmicFooter.module.css"; // plasmic-import: JBOg022ieg8Ip/c
 export type PlasmicFooter__VariantMembers = {
   state: "hasCompleted" | "singularLeft" | "empty";
 };
+
 export type PlasmicFooter__VariantsArgs = {
   state?: MultiChoiceArg<"hasCompleted" | "singularLeft" | "empty">;
 };
+
 type VariantPropType = keyof PlasmicFooter__VariantsArgs;
 export const PlasmicFooter__VariantProps = new Array<VariantPropType>("state");
 
 export type PlasmicFooter__ArgsType = {
   count?: React.ReactNode;
 };
+
 type ArgPropType = keyof PlasmicFooter__ArgsType;
 export const PlasmicFooter__ArgProps = new Array<ArgPropType>("count");
 
@@ -76,11 +79,19 @@ function PlasmicFooter__RenderFunc(props: {
   const { variants, overrides, forNode } = props;
 
   const $ctx = ph.useDataEnv?.() || {};
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {},
+
+        props.args
+      ),
+    [props.args]
+  );
 
   const $props = {
     ...args,
-    ...variants
+    ...variants,
   };
 
   const currentUser = p.useCurrentUser?.() || {};
@@ -90,8 +101,8 @@ function PlasmicFooter__RenderFunc(props: {
       {
         path: "state",
         type: "private",
-        initFunc: ($props, $state, $ctx) => $props.state
-      }
+        initFunc: ($props, $state, $ctx) => $props.state,
+      },
     ],
     [$props, $ctx]
   );
@@ -139,7 +150,7 @@ function PlasmicFooter__RenderFunc(props: {
               $state,
               "state",
               "singularLeft"
-            )
+            ),
           })}
         >
           {p.renderPlasmicSlot({
@@ -155,8 +166,8 @@ function PlasmicFooter__RenderFunc(props: {
                 $state,
                 "state",
                 "singularLeft"
-              )
-            })
+              ),
+            }),
           })}
           {(hasVariant($state, "state", "singularLeft") ? true : true) ? (
             <div
@@ -179,7 +190,7 @@ function PlasmicFooter__RenderFunc(props: {
                     $state,
                     "state",
                     "singularLeft"
-                  )
+                  ),
                 }
               )}
             >
@@ -227,7 +238,7 @@ function PlasmicFooter__RenderFunc(props: {
                 $state,
                 "state",
                 "hasCompleted"
-              )
+              ),
             }
           )}
         >
@@ -239,7 +250,7 @@ function PlasmicFooter__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  footerContainer: ["footerContainer"]
+  footerContainer: ["footerContainer"],
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -284,7 +295,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
           name: nodeName,
           descendantNames: [...PlasmicDescendants[nodeName]],
           internalArgPropNames: PlasmicFooter__ArgProps,
-          internalVariantPropNames: PlasmicFooter__VariantProps
+          internalVariantPropNames: PlasmicFooter__VariantProps,
         }),
       [props, nodeName]
     );
@@ -293,7 +304,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       variants,
       args,
       overrides,
-      forNode: nodeName
+      forNode: nodeName,
     });
   };
   if (nodeName === "footerContainer") {
@@ -312,7 +323,7 @@ export const PlasmicFooter = Object.assign(
 
     // Metadata about props expected for PlasmicFooter
     internalVariantProps: PlasmicFooter__VariantProps,
-    internalArgProps: PlasmicFooter__ArgProps
+    internalArgProps: PlasmicFooter__ArgProps,
   }
 );
 

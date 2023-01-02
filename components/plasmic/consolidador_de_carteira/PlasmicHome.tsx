@@ -32,7 +32,7 @@ import {
   useTrigger,
   StrictProps,
   deriveRenderOpts,
-  ensureGlobalVariants
+  ensureGlobalVariants,
 } from "@plasmicapp/react-web";
 import Switch from "../../Switch"; // plasmic-import: XQA6zh3cTBE/component
 import AssetGroupChart from "../../AssetGroupChart"; // plasmic-import: HJ5nLaIXID/component
@@ -74,11 +74,19 @@ function PlasmicHome__RenderFunc(props: {
   const { variants, overrides, forNode } = props;
 
   const $ctx = ph.useDataEnv?.() || {};
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {},
+
+        props.args
+      ),
+    [props.args]
+  );
 
   const $props = {
     ...args,
-    ...variants
+    ...variants,
   };
 
   const currentUser = p.useCurrentUser?.() || {};
@@ -217,7 +225,7 @@ const PlasmicDescendants = {
     "balanceValue",
     "multiLine",
     "contents",
-    "assetGroupChart"
+    "assetGroupChart",
   ],
   appTitle: ["appTitle"],
   balanceContainer: ["balanceContainer", "text", "balanceValue"],
@@ -225,7 +233,7 @@ const PlasmicDescendants = {
   balanceValue: ["balanceValue"],
   multiLine: ["multiLine"],
   contents: ["contents", "assetGroupChart"],
-  assetGroupChart: ["assetGroupChart"]
+  assetGroupChart: ["assetGroupChart"],
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -277,7 +285,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
           name: nodeName,
           descendantNames: [...PlasmicDescendants[nodeName]],
           internalArgPropNames: PlasmicHome__ArgProps,
-          internalVariantPropNames: PlasmicHome__VariantProps
+          internalVariantPropNames: PlasmicHome__VariantProps,
         }),
       [props, nodeName]
     );
@@ -286,7 +294,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       variants,
       args,
       overrides,
-      forNode: nodeName
+      forNode: nodeName,
     });
   };
   if (nodeName === "root") {
@@ -319,8 +327,8 @@ export const PlasmicHome = Object.assign(
       title: "",
       description: "",
       ogImageSrc: "",
-      canonical: ""
-    }
+      canonical: "",
+    },
   }
 );
 

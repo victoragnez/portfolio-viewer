@@ -1,9 +1,9 @@
+import { SwitchRef } from "@plasmicapp/react-web";
 import * as React from "react";
 import {
+  DefaultSwitchProps,
   PlasmicSwitch,
-  DefaultSwitchProps
 } from "./plasmic/consolidador_de_carteira/PlasmicSwitch";
-import { SwitchRef } from "@plasmicapp/react-web";
 
 interface SwitchProps extends DefaultSwitchProps {}
 
@@ -18,5 +18,5 @@ function Switch_(props: SwitchProps, ref: SwitchRef) {
 const Switch = React.forwardRef(Switch_);
 
 export default Object.assign(Switch, {
-  __plumeType: "switch"
+  __plumeType: "switch",
 });

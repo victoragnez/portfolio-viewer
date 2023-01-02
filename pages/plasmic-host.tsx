@@ -1,18 +1,23 @@
+import { PlasmicCanvasHost, registerComponent } from "@plasmicapp/host";
+import { PieChart } from "../components/PieChart";
 
-import * as React from 'react';
-import Script from 'next/script';
-import { PlasmicCanvasHost, registerComponent } from '@plasmicapp/host';
-
-// You can register any code components that you want to use here; see
-// https://docs.plasmic.app/learn/code-components-ref/
-// And configure your Plasmic project to use the host url pointing at
-// the /plasmic-host page of your nextjs app (for example,
-// http://localhost:3000/plasmic-host).  See
-// https://docs.plasmic.app/learn/app-hosting/#set-a-plasmic-project-to-use-your-app-host
-
-// registerComponent(...)
+registerComponent(PieChart, {
+  name: "PieChart",
+  displayName: "Pie Chart",
+  importPath: "./components/PieChart",
+  props: {
+    data: {
+      type: "object",
+      hidden: () => true,
+      defaultValue: [
+        { name: "One", value: 10, color: "#E38627" },
+        { name: "Two", value: 15, color: "#C13C37" },
+        { name: "Three", value: 20, color: "#6A2135" },
+      ],
+    },
+  },
+});
 
 export default function PlasmicHost() {
   return <PlasmicCanvasHost />;
 }
-    

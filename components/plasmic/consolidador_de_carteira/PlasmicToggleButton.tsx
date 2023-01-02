@@ -32,7 +32,7 @@ import {
   useTrigger,
   StrictProps,
   deriveRenderOpts,
-  ensureGlobalVariants
+  ensureGlobalVariants,
 } from "@plasmicapp/react-web";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
@@ -43,9 +43,11 @@ import sty from "./PlasmicToggleButton.module.css"; // plasmic-import: JX9-2bz0P
 export type PlasmicToggleButton__VariantMembers = {
   state: "selected";
 };
+
 export type PlasmicToggleButton__VariantsArgs = {
   state?: SingleChoiceArg<"selected">;
 };
+
 type VariantPropType = keyof PlasmicToggleButton__VariantsArgs;
 export const PlasmicToggleButton__VariantProps = new Array<VariantPropType>(
   "state"
@@ -54,6 +56,7 @@ export const PlasmicToggleButton__VariantProps = new Array<VariantPropType>(
 export type PlasmicToggleButton__ArgsType = {
   children?: React.ReactNode;
 };
+
 type ArgPropType = keyof PlasmicToggleButton__ArgsType;
 export const PlasmicToggleButton__ArgProps = new Array<ArgPropType>("children");
 
@@ -77,11 +80,19 @@ function PlasmicToggleButton__RenderFunc(props: {
   const { variants, overrides, forNode } = props;
 
   const $ctx = ph.useDataEnv?.() || {};
-  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
+  const args = React.useMemo(
+    () =>
+      Object.assign(
+        {},
+
+        props.args
+      ),
+    [props.args]
+  );
 
   const $props = {
     ...args,
-    ...variants
+    ...variants,
   };
 
   const currentUser = p.useCurrentUser?.() || {};
@@ -91,8 +102,8 @@ function PlasmicToggleButton__RenderFunc(props: {
       {
         path: "state",
         type: "private",
-        initFunc: ($props, $state, $ctx) => $props.state
-      }
+        initFunc: ($props, $state, $ctx) => $props.state,
+      },
     ],
     [$props, $ctx]
   );
@@ -124,15 +135,15 @@ function PlasmicToggleButton__RenderFunc(props: {
             $state,
             "state",
             "selected"
-          )
-        })
+          ),
+        }),
       })}
     </div>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  root: ["root"]
+  root: ["root"],
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -177,7 +188,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
           name: nodeName,
           descendantNames: [...PlasmicDescendants[nodeName]],
           internalArgPropNames: PlasmicToggleButton__ArgProps,
-          internalVariantPropNames: PlasmicToggleButton__VariantProps
+          internalVariantPropNames: PlasmicToggleButton__VariantProps,
         }),
       [props, nodeName]
     );
@@ -186,7 +197,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       variants,
       args,
       overrides,
-      forNode: nodeName
+      forNode: nodeName,
     });
   };
   if (nodeName === "root") {
@@ -205,7 +216,7 @@ export const PlasmicToggleButton = Object.assign(
 
     // Metadata about props expected for PlasmicToggleButton
     internalVariantProps: PlasmicToggleButton__VariantProps,
-    internalArgProps: PlasmicToggleButton__ArgProps
+    internalArgProps: PlasmicToggleButton__ArgProps,
   }
 );
 
