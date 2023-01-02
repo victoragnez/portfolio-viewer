@@ -8,6 +8,7 @@ import EyeOutlined from "@ant-design/icons/EyeOutlined";
 
 import { computed, runInAction } from "mobx";
 import { observer } from "mobx-react-lite";
+import { GetStaticPropsResult } from "next";
 import { useRouter } from "next/router";
 import ReactTooltip from "react-tooltip";
 import AssetGroupChart from "../components/AssetGroupChart";
@@ -22,7 +23,9 @@ import {
   validateAndFetchData,
 } from "../utils/data-model";
 
-export async function getStaticProps(): Promise<{ props: HomeProps }> {
+export async function getStaticProps(): Promise<
+  GetStaticPropsResult<HomeProps>
+> {
   const contents =
     (await swallowAsync(() =>
       fs.readFile(path.join(process.cwd(), "data.json"), "utf8")
@@ -32,6 +35,7 @@ export async function getStaticProps(): Promise<{ props: HomeProps }> {
   const rootNode = await validateAndFetchData(data);
   return {
     props: { rootNode: rootNode.toSerializable() },
+    revalidate: 300,
   };
 }
 
