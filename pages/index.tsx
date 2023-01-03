@@ -26,26 +26,29 @@ import {
 export async function getStaticProps(): Promise<
   GetStaticPropsResult<HomeProps>
 > {
-  const contents =
-    (await swallowAsync(() =>
-      fs.readFile(path.join(process.cwd(), "data.json"), "utf8")
-    )) ||
+  let contents = await swallowAsync(() =>
+    fs.readFile(path.join(process.cwd(), "data.json"), "utf8")
+  );
+  const exampleData = !contents;
+  contents =
+    contents ||
     (await fs.readFile(path.join(process.cwd(), "data_example.json"), "utf8"));
   const data: AssetGroup = JSON.parse(contents);
   const rootNode = await validateAndFetchData(data);
   return {
-    props: { rootNode: rootNode.toSerializable() },
+    props: { rootNode: rootNode.toSerializable(), exampleData },
     revalidate: 300,
   };
 }
 
 interface HomeProps {
   rootNode: GroupNode;
+  exampleData: boolean;
 }
 
 export const ShowValuesContext = React.createContext(true);
 
-const Home = observer(function Home({ rootNode }: HomeProps) {
+const Home = observer(function Home({ rootNode, exampleData }: HomeProps) {
   const [multiLine, setMultiLine] = React.useState(false);
   const [showValues, setShowValues] = React.useState(true);
   const [noSSR, setNoSSR] = React.useState(false);
@@ -73,6 +76,7 @@ const Home = observer(function Home({ rootNode }: HomeProps) {
     >
       <ShowValuesContext.Provider value={showValues}>
         <PlasmicHome
+          exampleData={exampleData}
           balanceContainer={{
             wrapChildren: (children) => (
               <>

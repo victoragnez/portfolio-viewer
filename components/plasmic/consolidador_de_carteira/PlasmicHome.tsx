@@ -32,7 +32,7 @@ import {
   useTrigger,
   StrictProps,
   deriveRenderOpts,
-  ensureGlobalVariants,
+  ensureGlobalVariants
 } from "@plasmicapp/react-web";
 import Switch from "../../Switch"; // plasmic-import: XQA6zh3cTBE/component
 import AssetGroupChart from "../../AssetGroupChart"; // plasmic-import: HJ5nLaIXID/component
@@ -42,10 +42,16 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic_consolidador_de_carteira.module.css"; // plasmic-import: iDBRKAPkGAJGJDHPJiLdSk/projectcss
 import sty from "./PlasmicHome.module.css"; // plasmic-import: W5b0V4_JmHYlf/css
 
-export type PlasmicHome__VariantMembers = {};
-export type PlasmicHome__VariantsArgs = {};
+export type PlasmicHome__VariantMembers = {
+  exampleData: "exampleData";
+};
+export type PlasmicHome__VariantsArgs = {
+  exampleData?: SingleBooleanChoiceArg<"exampleData">;
+};
 type VariantPropType = keyof PlasmicHome__VariantsArgs;
-export const PlasmicHome__VariantProps = new Array<VariantPropType>();
+export const PlasmicHome__VariantProps = new Array<VariantPropType>(
+  "exampleData"
+);
 
 export type PlasmicHome__ArgsType = {};
 type ArgPropType = keyof PlasmicHome__ArgsType;
@@ -55,7 +61,6 @@ export type PlasmicHome__OverridesType = {
   root?: p.Flex<"div">;
   appTitle?: p.Flex<"div">;
   balanceContainer?: p.Flex<"div">;
-  text?: p.Flex<"div">;
   balanceValue?: p.Flex<"span">;
   multiLine?: p.Flex<typeof Switch>;
   contents?: p.Flex<"div">;
@@ -74,22 +79,26 @@ function PlasmicHome__RenderFunc(props: {
   const { variants, overrides, forNode } = props;
 
   const $ctx = ph.useDataEnv?.() || {};
-  const args = React.useMemo(
-    () =>
-      Object.assign(
-        {},
-
-        props.args
-      ),
-    [props.args]
-  );
+  const args = React.useMemo(() => Object.assign({}, props.args), [props.args]);
 
   const $props = {
     ...args,
-    ...variants,
+    ...variants
   };
 
   const currentUser = p.useCurrentUser?.() || {};
+
+  const stateSpecs = React.useMemo(
+    () => [
+      {
+        path: "exampleData",
+        type: "private",
+        initFunc: ($props, $state, $ctx) => $props.exampleData
+      }
+    ],
+    [$props, $ctx]
+  );
+  const $state = p.useDollarState(stateSpecs, $props, $ctx);
 
   const [$queries, setDollarQueries] = React.useState({});
 
@@ -115,7 +124,14 @@ function PlasmicHome__RenderFunc(props: {
             projectcss.plasmic_default_styles,
             projectcss.plasmic_mixins,
             projectcss.plasmic_tokens,
-            sty.root
+            sty.root,
+            {
+              [sty.rootexampleData]: hasVariant(
+                $state,
+                "exampleData",
+                "exampleData"
+              )
+            }
           )}
         >
           <div
@@ -134,26 +150,52 @@ function PlasmicHome__RenderFunc(props: {
             <p.Stack
               as={"div"}
               hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___1Nw4Q)}
+              className={classNames(projectcss.all, sty.freeBox___1Nw4Q, {
+                [sty.freeBoxexampleData___1Nw4QLd40J]: hasVariant(
+                  $state,
+                  "exampleData",
+                  "exampleData"
+                )
+              })}
             >
               {true ? (
-                <div className={classNames(projectcss.all, sty.freeBox__kHeUj)}>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox__kHeUj, {
+                    [sty.freeBoxexampleData__kHeUjLd40J]: hasVariant(
+                      $state,
+                      "exampleData",
+                      "exampleData"
+                    )
+                  })}
+                >
                   {true ? (
                     <div
                       data-plasmic-name={"balanceContainer"}
                       data-plasmic-override={overrides.balanceContainer}
                       className={classNames(
                         projectcss.all,
-                        sty.balanceContainer
+                        sty.balanceContainer,
+                        {
+                          [sty.balanceContainerexampleData]: hasVariant(
+                            $state,
+                            "exampleData",
+                            "exampleData"
+                          )
+                        }
                       )}
                     >
                       <div
-                        data-plasmic-name={"text"}
-                        data-plasmic-override={overrides.text}
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text
+                          sty.text__mUihs,
+                          {
+                            [sty.textexampleData__mUihsLd40J]: hasVariant(
+                              $state,
+                              "exampleData",
+                              "exampleData"
+                            )
+                          }
                         )}
                       >
                         <React.Fragment>
@@ -188,13 +230,39 @@ function PlasmicHome__RenderFunc(props: {
                   </Switch>
                 </div>
               ) : null}
+              {(
+                hasVariant($state, "exampleData", "exampleData") ? true : true
+              ) ? (
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___6Alsx,
+                    {
+                      [sty.textexampleData___6AlsxLd40J]: hasVariant(
+                        $state,
+                        "exampleData",
+                        "exampleData"
+                      )
+                    }
+                  )}
+                >
+                  {"* Exibindo dados fictícios"}
+                </div>
+              ) : null}
               {true ? (
                 <p.Stack
                   as={"div"}
                   data-plasmic-name={"contents"}
                   data-plasmic-override={overrides.contents}
                   hasGap={true}
-                  className={classNames(projectcss.all, sty.contents)}
+                  className={classNames(projectcss.all, sty.contents, {
+                    [sty.contentsexampleData]: hasVariant(
+                      $state,
+                      "exampleData",
+                      "exampleData"
+                    )
+                  })}
                 >
                   {true ? (
                     <AssetGroupChart
@@ -221,19 +289,17 @@ const PlasmicDescendants = {
     "root",
     "appTitle",
     "balanceContainer",
-    "text",
     "balanceValue",
     "multiLine",
     "contents",
-    "assetGroupChart",
+    "assetGroupChart"
   ],
   appTitle: ["appTitle"],
-  balanceContainer: ["balanceContainer", "text", "balanceValue"],
-  text: ["text", "balanceValue"],
+  balanceContainer: ["balanceContainer", "balanceValue"],
   balanceValue: ["balanceValue"],
   multiLine: ["multiLine"],
   contents: ["contents", "assetGroupChart"],
-  assetGroupChart: ["assetGroupChart"],
+  assetGroupChart: ["assetGroupChart"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -242,7 +308,6 @@ type NodeDefaultElementType = {
   root: "div";
   appTitle: "div";
   balanceContainer: "div";
-  text: "div";
   balanceValue: "span";
   multiLine: typeof Switch;
   contents: "div";
@@ -261,15 +326,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicHome__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicHome__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    // Specify args directly as props
-    Omit<PlasmicHome__ArgsType, ReservedPropsType> &
-    // Specify overrides for each element directly as props
-    Omit<
+    /* Specify args directly as props*/ Omit<
+      PlasmicHome__ArgsType,
+      ReservedPropsType
+    > &
+    /* Specify overrides for each element directly as props*/ Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    // Specify props for the root element
-    Omit<
+    /* Specify props for the root element*/ Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;
@@ -285,7 +350,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
           name: nodeName,
           descendantNames: [...PlasmicDescendants[nodeName]],
           internalArgPropNames: PlasmicHome__ArgProps,
-          internalVariantPropNames: PlasmicHome__VariantProps,
+          internalVariantPropNames: PlasmicHome__VariantProps
         }),
       [props, nodeName]
     );
@@ -294,7 +359,7 @@ function makeNodeComponent<NodeName extends NodeNameType>(nodeName: NodeName) {
       variants,
       args,
       overrides,
-      forNode: nodeName,
+      forNode: nodeName
     });
   };
   if (nodeName === "root") {
@@ -312,7 +377,6 @@ export const PlasmicHome = Object.assign(
     // Helper components rendering sub-elements
     appTitle: makeNodeComponent("appTitle"),
     balanceContainer: makeNodeComponent("balanceContainer"),
-    text: makeNodeComponent("text"),
     balanceValue: makeNodeComponent("balanceValue"),
     multiLine: makeNodeComponent("multiLine"),
     contents: makeNodeComponent("contents"),
@@ -327,8 +391,8 @@ export const PlasmicHome = Object.assign(
       title: "",
       description: "",
       ogImageSrc: "",
-      canonical: "",
-    },
+      canonical: ""
+    }
   }
 );
 

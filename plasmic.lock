@@ -2,19 +2,19 @@
   "projects": [
     {
       "projectId": "iDBRKAPkGAJGJDHPJiLdSk",
-      "version": "1.0.0",
+      "version": "2.0.0",
       "dependencies": {},
       "lang": "ts",
       "fileLocks": [
         {
           "type": "renderModule",
           "assetId": "W5b0V4_JmHYlf",
-          "checksum": "00866d546ec00460674260e6d5f22031"
+          "checksum": "61803cc0ecb27e242a67b6356e6c8509"
         },
         {
           "type": "cssRules",
           "assetId": "W5b0V4_JmHYlf",
-          "checksum": "00866d546ec00460674260e6d5f22031"
+          "checksum": "61803cc0ecb27e242a67b6356e6c8509"
         },
         {
           "type": "renderModule",

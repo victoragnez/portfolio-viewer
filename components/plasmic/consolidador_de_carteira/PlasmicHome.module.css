@@ -72,7 +72,7 @@
   max-width: 100%;
   min-width: 0;
 }
-.text {
+.text__mUihs {
   height: auto;
   max-width: 800px;
   color: var(--token-1vfxH0qLb59bm);
@@ -80,6 +80,20 @@
 .multiLine:global(.__wab_instance) {
   max-width: 100%;
   position: relative;
+}
+.text___6Alsx {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  padding-left: 8px;
+  margin-top: calc(-52px + 52px) !important;
+  min-width: 0;
+  display: none;
+}
+.textexampleData___6AlsxLd40J {
+  margin-top: calc(-52px + 52px) !important;
+  display: block;
 }
 .contents {
   flex-direction: row;

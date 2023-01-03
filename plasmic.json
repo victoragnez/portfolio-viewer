@@ -25,7 +25,7 @@
       "projectId": "iDBRKAPkGAJGJDHPJiLdSk",
       "projectApiToken": "stIvK9hlF6phbLke7sR9SjTC8JcxkQJhgHwqUqcToW1v372BI4HIw5V8Cc797LX0hwoRKQSjEh7NBa1WF9xQ",
       "projectName": "Consolidador de carteira",
-      "version": "^1.0.0",
+      "version": "^2.0.0",
       "cssFilePath": "plasmic/consolidador_de_carteira/plasmic_consolidador_de_carteira.module.css",
       "components": [
         {
