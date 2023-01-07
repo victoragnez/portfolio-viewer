@@ -4750,6 +4750,11 @@
     "name": "Binance8"
   },
   {
+    "id": "binancecoin",
+    "symbol": "bnb",
+    "name": "BNB"
+  },
+  {
     "id": "binanceidr",
     "symbol": "bidr",
     "name": "BIDR"
@@ -10643,6 +10648,11 @@
     "id": "decentrabnb",
     "symbol": "dbnb",
     "name": "DecentraBNB"
+  },
+  {
+    "id": "decentraland",
+    "symbol": "mana",
+    "name": "Decentraland"
   },
   {
     "id": "decentral-games-governance",
@@ -18523,6 +18533,11 @@
     "id": "helicopter-finance",
     "symbol": "copter",
     "name": "Helicopter Finance"
+  },
+  {
+    "id": "helium",
+    "symbol": "hnt",
+    "name": "Helium"
   },
   {
     "id": "helkin",

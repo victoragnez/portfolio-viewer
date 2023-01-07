@@ -225,7 +225,7 @@ function renderCharts(
                         child instanceof GroupNode &&
                         child.isOpen
                       ) {
-                        child.isOpen = false;
+                        closeSubtree(child);
                       }
                     });
                   }

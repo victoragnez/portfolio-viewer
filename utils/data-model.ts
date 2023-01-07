@@ -340,7 +340,7 @@ async function validateAsset(asset: Asset, path: string[]): Promise<AssetNode> {
         isFinite(cryptoPrice),
         () => `Failed to fetch crypto price rate for ${asset.ticker}`
       );
-      // crypto-price
+      // coingecko-api
       return new AssetNode({
         asset,
         path,
